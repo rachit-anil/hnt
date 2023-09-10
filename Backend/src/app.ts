@@ -6,8 +6,12 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT;
 
+const FAKE_DATA = {
+  message: "A message from node",
+};
+
 app.get('/', (req, res) => {
-  res.send('Hello Folks !');
+  res.send(FAKE_DATA);
 });
 
 app.listen(port, () => {
