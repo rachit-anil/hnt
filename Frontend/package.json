@@ -10,6 +10,7 @@
     "@types/node": "^16.18.50",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
+    "env-cmd": "^10.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -18,8 +19,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "prod": "pm2 --name 'react' serve build/ 3000",
     "build": "react-scripts build",
+    "serve": "serve -s build",
+    "build:staging": "env-cmd -f .env.staging npm run build",
+    "deploy:staging": "pm2 --name 'react-staging' serve build/ 3000",
+    "build:production": "env-cmd -f .env.production npm run build",
+    "deploy:production": "pm2 --name 'react-prod' serve build/ 3000",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

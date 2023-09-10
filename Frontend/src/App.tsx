@@ -1,14 +1,18 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import config from './config/config';
+
+
 function fetchCall() {
-  fetch('http://13.127.51.92:8080/').then(x => x.json()).then(x => console.log(x));
+  fetch(config.APP_URL).then(x => x.json()).then(x => console.log(x));
 }
 function App() {
   return (
     <>
       <button onClick={fetchCall}>Click</button>
       <div>Here N there</div>
+      <div>{process.env.REACT_APP_API_URL}</div>
     </>
   );
 }
